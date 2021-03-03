@@ -1,5 +1,5 @@
 'use strict';
-
+const fs = require("fs");
 
 
 const express = require('express');
@@ -15,7 +15,7 @@ const client = new Discord.Client();
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-   client.user.setPresence({ activity: { name: 'f!help' }, status: 'online'})
+   client.user.setPresence({ activity: { name: 's!help' }, status: 'online'})
   .then(console.log)
   .catch(console.error);
 });
@@ -46,7 +46,7 @@ client.on('message', message => {
       message.channel.send("**The Current List Of Commands:**\n " + commands.join("\n "));
       //console.log("There was a client request");
     }
-
+  
     else if (cmd === "ping") {
       message.channel.send("Pong! I am online");
       //console.log("There was a client request");
@@ -65,7 +65,11 @@ client.on('message', message => {
      message.channel.send("The rule of thumb for research is not to perform the same experiment under the same conditions. For instance, you can take multiple barometric pressure readings of Droo, but they can’t be at the same or nearly the same altitude. Likewise you can take many gravitometer reading, but at different orbits and inclinations. Each science part can only be used once per flight, but multiple parts can be attached to a craft for multiple readings. Multiple experiments of the same kind can be performed on the same mission, if the conditions around the experiment change (change in orbit for gravitometer and radiation detector, change in air density for barometer, etc). However the more you repeat an experiment in the same conditions, the less value the experiment becomes at an exponential rate. SP = C*2(1-i) Where C is the initial value of the experiment and i is the number of times the experiment is repeated. This comes out to be half the value of the previous experiment for every iteration. If an experiment is worth 20 science the first time it's used, it will be worth 10 the second, 5 the third, and so on. Data tends to be lost in transmission, so getting the experiments back physically can yield larger payouts of science. If you’re able to return your experiments to Droo, it doubles the scientific value of the experiments.\n ");
      message.channel.send("**Research Part List**\nThe following show what parts, fuels, and customizable characteristics get unlocked with each technology researched.\n\n\n**Tier 0**\n -*Basic Rocketry*\n-Fins\n -Fuel Tank\n -PBAN Solid Fuel\n-Nose Cone\n-Command Chip\n-Cone Nozzle\n-Camera\n-Fairings\n-Battery\n-Interstage\n*Atmospheric Flight*\n-Wings\n-Jet Engines\n-Jet Fuel\n-Barometer\n-Landing Gear");
      message.channel.send("**Tier I** \n\nGyroscopes\n -Gyroscope Part \n\nBasic Solid Rockets \n-Solid Rocket Engines\n-Echo Nozzle\n\n-Basic Liquid Rockets \n-Gas Generator 1 \n-Fuel Cycle Pressure Fed 1 \n-Fuel Cycle Redstone Nozzle Ethanol (75%) Fuel Kerosene\n-Liquid Fuel Methanol\n-Fuel Liquid Oxygen Oxidizer\n\nCommunications\n -Radio Antenna\n-Radio Dish\n\n Laboratories\n-Laboratory Infrastructure Mission");
+     
+     message.channel.send("**Tier II**\n-Advanced Propellants\n-APCP Solid Fuel\n-HTPB Solid Fuel\n-CTPB Solid Fuel\n-Ethanol (95%) Fuel\n-Ammonia Liquid Fuel\n**Hybrid Power Cycles**\n-Hybrid Power Cycle\n-HTPB/LOX-\n**Basic Science**\n-Gravitometer\n-Radiation Detector\n-Beacon Light\nhttps://www.simplerockets.com/c/YQp4DL/SR2CM-Science-Part-Pack\n**Solar Panels**\n-Solar Panel\n**Re-Entry**\n-Landing Leg\n-Parachute\n-Heatshield\n**Reaction Control Systems**\n-RCS Thruster\n-Multi-Directional RCS Thruster\n-H2O2 100% Monopropellant Fuel\n***For more tiers, read here: https://docs.google.com/document/d/1gc-mV9uLCEOntTo01-Cl1GXT1PdkUDSvOQ1l90rvxMs/edit#***");
+      
    }
+   
    
 
   }
