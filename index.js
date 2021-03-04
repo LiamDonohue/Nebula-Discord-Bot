@@ -38,15 +38,15 @@ client.on('message', message => {
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 
   const args = message.content.slice(prefix.length).trim().split(/ +/);
-  const command = args.shift().toLowerCase();
+  //const command = args.shift().message.content.split(' ')[0].substring(prefix.length).toLowerCase();
   //const args = message.content.slice(prefix.length).trim().split(/ +/);
   var commands = ["s!commands", "s!ping", "s!help [Enter topic here]", "s!FAQ"];
   var prefix = "s!";
   if (message.content.startsWith(prefix)) {
    //const args = message.content.slice(prefix.length).trim().split(/ +/);
-   //var cmd = (message.content.split(' ')[0]).substring(prefix.length).toLowerCase();
+   var cmd = (args.shift().essage.content.split(' ')[0]).substring(prefix.length).toLowerCase();
 
-    if (command === "commands") {
+    if (cmd === "commands") {
       message.channel.send("**The Current List Of Commands:**\n " + commands.join("\n "));
       //console.log("There was a client request");
     }
@@ -65,17 +65,22 @@ client.on('message', message => {
       //console.log("There was a client request");
     }
     else if(command === "help"){
-    if (!args.length) {
-		return message.channel.send("Proper usage: `s!help [topic]`");
-	}
-	else if (args[0] === 'companies') {
-		return message.channel.send("**Companies**\nA company is a player run organization within Campaign mode. One player will serve as the CEO of the company and makes all decisions on behalf of the company. The CEO can hire other willing players to be employees in their company. Employees can help build and design crafts, pilot missions, or manage the company. There are no rules as to how a company is structured, so there is total freedom for the CEO and their employees to make it as simple or complex as they want. To start a company, send a message in the #the-flight-administration channel, asking for approval for your company. You’ll need a name for your company, logos, slogans, fliers, and superbowl ads are all optional but highly encouraged. Have fun with it! Once a company is approved, a moderator will create a custom channel for that company, as well as track the funds for that company. CEOs can use their company channel to communicate with their employees, share craft files, photos, memes, literally whatever they want. It is recommended that after creating their company, a CEO writes their own rules and pins it in their company text channel. It’s not required, but it is encouraged. There is a limit of how many companies can exist at a time. Companies that go inactive for long periods of time will close and allow for new companies to open in their place. Once the server is at its maximum capacity for companies, new players can join other companies to gain experience and reputation within the server and earn extra money to start their own company.");
-   }
+      if (!args.length) {
+		  return message.channel.send("Proper usage: `s!help [topic]`");
+      }
+	    else if (args[0] === "companies") {
+		  return message.channel.send("**Companies**\nA company is a player run organization within Campaign mode. One player will serve as the CEO of the company and makes all decisions on behalf of the company. The CEO can hire other willing players to be employees in their company. Employees can help build and design crafts, pilot missions, or manage the company. There are no rules as to how a company is structured, so there is total freedom for the CEO and their employees to make it as simple or complex as they want. To start a company, send a message in the #the-flight-administration channel, asking for approval for your company. You’ll need a name for your company, logos, slogans, fliers, and superbowl ads are all optional but highly encouraged. Have fun with it! Once a company is approved, a moderator will create a custom channel for that company, as well as track the funds for that company. CEOs can use their company channel to communicate with their employees, share craft files, photos, memes, literally whatever they want. It is recommended that after creating their company, a CEO writes their own rules and pins it in their company text channel. It’s not required, but it is encouraged. There is a limit of how many companies can exist at a time. Companies that go inactive for long periods of time will close and allow for new companies to open in their place. Once the server is at its maximum capacity for companies, new players can join other companies to gain experience and reputation within the server and earn extra money to start their own company.");
+    }
+    else{
+      message.channel.send("No article matches that name")
+    }
+    
+  }
    //money command
   /* else if(command === "money"){
      message.channel.send("**Money**\nCompanies use money to build rockets, pay employees, and upkeep their space infrastructure. Starting out, a company is given an initial investment of $10M. They can use this to build rockets. At the bottom of the designer screen is a price tag for the craft. If that craft is used in an official mission for a contract or space infrastructure, then the price of the craft is deducted from the company's funds. If a company reaches $0 in funds, they can declare bankruptcy. When a company goes bankrupt, they receive a $10M loan and can start over. All space infrastructure owned at the time are deactivated, and must be reactivated before they can start operating them again. Companies can loan money to other companies at whatever agreed upon interest rate between the CEOs. Companies can also buy hardware from other companies. Companies can directly purchase a vehicle for their own use at an agreed upon rate, or higher another company to fly their own missin for them. Negotiations on price can occur in the #ceo-chat channel. The cost of a mission is equal to the cost of the craft, times any modifier for the mission. Missions that are launched from a non standard launch site have an extra cost modifier added to them. Missions that are reusable and can be relaunched multiple times have a discount applied to them according to the degree to which the mission is reusable. Companies can also purchase the rights to use a different company’s craft for a mission. The company pays for the mission normally, plus an additional 25% to the original creator of the craft. Company’s can make their money just by selling crafts to other companies.");
 	}*/
-    }
+    
     //companies help
    
    //money command
